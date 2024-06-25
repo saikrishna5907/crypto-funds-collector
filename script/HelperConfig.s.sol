@@ -8,6 +8,7 @@ import {MockV3Aggregator} from "../test/mocks/MockV3Aggregator.sol";
 contract HelperConfig is Script {
     uint8 public constant DECIMALS = 8;
     int256 public constant INITIAL_PRICE = 2000e8;
+
     struct NetworkConfig {
         address priceFeedAddress;
     }
@@ -23,9 +24,8 @@ contract HelperConfig is Script {
     }
 
     function getSepoliaETHConfig() public pure returns (NetworkConfig memory) {
-        NetworkConfig memory sepoliaETHConfig = NetworkConfig({
-            priceFeedAddress: 0x694AA1769357215DE4FAC081bf1f309aDC325306
-        });
+        NetworkConfig memory sepoliaETHConfig =
+            NetworkConfig({priceFeedAddress: 0x694AA1769357215DE4FAC081bf1f309aDC325306});
         return sepoliaETHConfig;
     }
 
@@ -37,15 +37,10 @@ contract HelperConfig is Script {
 
         // Deploy the mocks
         vm.startBroadcast();
-        MockV3Aggregator mockV3Aggregator = new MockV3Aggregator(
-            DECIMALS,
-            INITIAL_PRICE
-        );
+        MockV3Aggregator mockV3Aggregator = new MockV3Aggregator(DECIMALS, INITIAL_PRICE);
         vm.stopBroadcast();
 
-        NetworkConfig memory anvilETHConfig = NetworkConfig({
-            priceFeedAddress: address(mockV3Aggregator)
-        });
+        NetworkConfig memory anvilETHConfig = NetworkConfig({priceFeedAddress: address(mockV3Aggregator)});
         return anvilETHConfig;
     }
 }

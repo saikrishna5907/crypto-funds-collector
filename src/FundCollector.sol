@@ -8,6 +8,7 @@ error FundCollector__NotOwner();
 
 contract FundCollector {
     using PriceConverter for uint256;
+
     uint256 public constant MINIMUM_USD = 5e18;
     mapping(address => uint256) private s_addressToAmountFunded;
     address[] private s_funders;
@@ -33,7 +34,7 @@ contract FundCollector {
         s_addressToAmountFunded[msg.sender] += msg.value;
         s_funders.push(msg.sender);
     }
-    
+
     function cheaperWithDraw() public onlyOwner {
         uint256 fundersLength = s_funders.length;
         for (uint256 funderIndex = 0; funderIndex < fundersLength; funderIndex++) {
@@ -42,7 +43,7 @@ contract FundCollector {
         }
 
         s_funders = new address[](0);
-        
+
         (bool callSuccess,) = payable(i_owner).call{value: address(this).balance}("");
         require(callSuccess, "Call failed");
     }
@@ -68,7 +69,6 @@ contract FundCollector {
         (bool callSuccess,) = payable(i_owner).call{value: address(this).balance}("");
         require(callSuccess, "Call failed");
     }
-
 
     // Explainer from: https://solidity-by-example.org/fallback/
     // Ether is sent to contract

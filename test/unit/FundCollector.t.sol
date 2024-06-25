@@ -73,14 +73,10 @@ contract FundCollectorTest is Test {
 
         fundCollector.withdraw();
         uint256 ownerBalanceAfterWithdraw = fundCollector.getOwner().balance;
-        uint256 fundCollectorBalanceAfterWithDraw = address(fundCollector)
-            .balance;
+        uint256 fundCollectorBalanceAfterWithDraw = address(fundCollector).balance;
 
         assertEq(fundCollectorBalanceAfterWithDraw, 0);
-        assertEq(
-            ownerBalanceBeforeWithdraw + fundCollectorBalance,
-            ownerBalanceAfterWithdraw
-        );
+        assertEq(ownerBalanceBeforeWithdraw + fundCollectorBalance, ownerBalanceAfterWithdraw);
         assertEq(fundCollector.getFunders().length, 0);
     }
 
@@ -97,8 +93,7 @@ contract FundCollectorTest is Test {
         }
 
         uint256 ownerBalanceBeforeWithdraw = fundCollector.getOwner().balance;
-        uint256 fundCollectorBalanceBeforeWithDraw = address(fundCollector)
-            .balance;
+        uint256 fundCollectorBalanceBeforeWithDraw = address(fundCollector).balance;
 
         // pranking the current user to be a owner
         vm.startPrank(fundCollector.getOwner());
@@ -106,14 +101,10 @@ contract FundCollectorTest is Test {
         vm.stopPrank();
 
         uint256 ownerBalanceAfterWithdraw = fundCollector.getOwner().balance;
-        uint256 fundCollectorBalanceAfterWithDraw = address(fundCollector)
-            .balance;
+        uint256 fundCollectorBalanceAfterWithDraw = address(fundCollector).balance;
 
         assertEq(fundCollectorBalanceAfterWithDraw, 0);
-        assertEq(
-            ownerBalanceBeforeWithdraw + fundCollectorBalanceBeforeWithDraw,
-            ownerBalanceAfterWithdraw
-        );
+        assertEq(ownerBalanceBeforeWithdraw + fundCollectorBalanceBeforeWithDraw, ownerBalanceAfterWithdraw);
         assertEq(fundCollector.getFunders().length, 0);
     }
 
@@ -130,8 +121,7 @@ contract FundCollectorTest is Test {
         }
 
         uint256 ownerBalanceBeforeWithdraw = fundCollector.getOwner().balance;
-        uint256 fundCollectorBalanceBeforeWithDraw = address(fundCollector)
-            .balance;
+        uint256 fundCollectorBalanceBeforeWithDraw = address(fundCollector).balance;
 
         // pranking the current user to be a owner
         vm.startPrank(fundCollector.getOwner());
@@ -139,14 +129,10 @@ contract FundCollectorTest is Test {
         vm.stopPrank();
 
         uint256 ownerBalanceAfterWithdraw = fundCollector.getOwner().balance;
-        uint256 fundCollectorBalanceAfterWithDraw = address(fundCollector)
-            .balance;
+        uint256 fundCollectorBalanceAfterWithDraw = address(fundCollector).balance;
 
         assertEq(fundCollectorBalanceAfterWithDraw, 0);
-        assertEq(
-            ownerBalanceBeforeWithdraw + fundCollectorBalanceBeforeWithDraw,
-            ownerBalanceAfterWithdraw
-        );
+        assertEq(ownerBalanceBeforeWithdraw + fundCollectorBalanceBeforeWithDraw, ownerBalanceAfterWithdraw);
         assertEq(fundCollector.getFunders().length, 0);
     }
 
