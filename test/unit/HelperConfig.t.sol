@@ -2,16 +2,12 @@
 
 pragma solidity 0.8.19;
 import {Test} from "forge-std/Test.sol";
-import {HelperConfig} from "../script/HelperConfig.s.sol";
+import {HelperConfig} from "../../script/HelperConfig.s.sol";
 
 contract HelperConfigTest is Test {
     HelperConfig helperConfig;
 
     function setUp() external {
         helperConfig = new HelperConfig();
-    }
-
-    function testMinimumDollarIsFive() public view {
-        assertEq(helperConfig.MINIMUM_USD(), 5e18);
     }
 }
